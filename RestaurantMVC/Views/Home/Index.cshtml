@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<RestaurantMVC.Models.Restaurant>
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -19,20 +21,20 @@
                 <li class="text-left">@Html.ActionLink("Restaurants", "Restaurants", "Home")</li>
                 @*TODO: Implement identity*@
                 @*@using Microsoft.AspNet.Identity
-                @if (Request.IsAuthenticated)
-                {
+                    @if (Request.IsAuthenticated)
+                    {
 
-                    <li class="text-right" style="float:right;">
-                        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-                        }
-                    </li>
-                    <li class="text-right" style="float:right;">@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
-                }
-                else
-                {*@
+                        <li class="text-right" style="float:right;">
+                            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                            }
+                        </li>
+                        <li class="text-right" style="float:right;">@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                    }
+                    else
+                    {*@
                 <li class="text-right" style="float:right;">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
                 @*<li class="text-right" style="float:right;">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
                 <li id="modBtn" class="text-right" style="float:right;">Login</li>
@@ -49,7 +51,7 @@
             </div>
         </div>
 
-        @{ Html.RenderPartial("RestaurantTop3"); }
+        @{ Html.RenderPartial("_PartialRestaurants", Model); }
 
         <footer class="footer">
             <ul>

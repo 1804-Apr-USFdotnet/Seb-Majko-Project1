@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestaurantMVC.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,7 @@ namespace RestaurantMVC.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return View(Restaurant.TopThree());
         }
 
         public ActionResult About()

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<RestaurantMVC.Models.Restaurant>
+
+<link rel="stylesheet" href="~/Content/Index.css">
+
+<ul class="list-group list-inline top-3 borderless">
+    @if (Model != null)
+    {
+        foreach (var restaurant in Model)
+        {
+            <li class="list-group-item col-md-4 li-container">
+                <ul class="list-group borderless">
+                    <li class="borderless list-group-item restaurant-name">@restaurant.Name</li>
+                    <li class="borderless list-group-item restaurant-address">@restaurant.Address</li>
+                    <li class="borderless list-group-item restaurant-rating">@restaurant.Rating</li>
+                </ul>
+            </li>
+        }
+    }
+
+    @*<li class="list-group-item col-md-4 li-container">
+            <ul class="list-group borderless">
+                <li class="borderless list-group-item restaurant-name">Restaurant 1</li>
+                <li class="borderless list-group-item restaurant-address1">99 street</li>
+                <li class="borderless list-group-item restaurant-address2">nyc 11228</li>
+                <li class="borderless list-group-item restaurant-rating">4.4/5</li>
+            </ul>
+        </li>
+        <li class="list-group-item col-md-4 li-container">
+            <ul class="list-group">
+                <li class="borderless list-group-item restaurant-name">Restaurant 1</li>
+                <li class="borderless list-group-item restaurant-address1">99 street</li>
+                <li class="borderless list-group-item restaurant-address2">nyc 11228</li>
+                <li class="borderless list-group-item restaurant-rating">4.4/5</li>
+            </ul>
+        </li>
+        <li class="list-group-item col-md-4 li-container">
+            <ul class="list-group">
+                <li class="borderless list-group-item restaurant-name">Restaurant 1</li>
+                <li class="borderless list-group-item restaurant-address1">99 street</li>
+                <li class="borderless list-group-item restaurant-address2">nyc 11228</li>
+                <li class="borderless list-group-item restaurant-rating">4.4/5</li>
+            </ul>
+        </li>*@
+</ul>

@@ -41,7 +41,7 @@ namespace RestaurantMVC.Models
 
         public static List<Restaurant> TopThree()
         {
-            List<Restaurant> r = ToWebList(ProcessInput.GetRestaurants("top", "3"));
+            List<Restaurant> r = ToWebList(ProcessInput.GetRestaurants("restaurants", "top", "3"));
             return r;
         }
 
@@ -53,7 +53,7 @@ namespace RestaurantMVC.Models
 
         public static List<Restaurant> SearchRestaurants(string query)
         {
-            List<Restaurant> r = ToWebList(ProcessInput.GetRestaurants("contains", query));
+            List<Restaurant> r = ToWebList(ProcessInput.GetRestaurants("restaurants", "contains", query));
             return r;
         }
 
@@ -80,6 +80,7 @@ namespace RestaurantMVC.Models
                 id = rInfo.id,
                 Name = rInfo.Name,
                 Address = rInfo.Address,
+                Rating = rInfo.Rating,
                 Reviews = rInfo.Reviews.Cast<Review>().ToList()
             };
             return r;
