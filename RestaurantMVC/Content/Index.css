@@ -1,0 +1,138 @@
+﻿/*body {
+    padding-top: 0px;
+    padding-bottom: 20px;
+}
+
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}*/
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+ul li {
+    display: inline-block;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+    .footer a {
+        padding-left: 13px;
+        padding-right: 13px;
+        color: black;
+    }
+
+body {
+    padding-top: 0px;
+    padding-bottom: 10px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+li.borderless {
+    border: 0 none;
+}
+
+li.li-container {
+    padding: 10px;
+    /*margin: 10px;*/
+}
+
+ul.top-3 {
+    /*top: -100px;*/
+    padding-top: 350px;
+}
+
+.container {
+    max-width: 100%;
+    padding: 0px;
+    height: 100%;
+}
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.bgimage {
+    width: 100%;
+    min-height: 600px;
+    background: url('../Images/banner.jpg');
+    background-repeat: no-repeat;
+    /*background-position: center;
+    background-size: cover;*/
+    background-position: top;
+    background-size: contain;
+    /*background-attachment: fixed;*/
+    background-attachment: scroll;
+    margin: 0px;
+}
+
+    .bgimage h5 {
+        color: white;
+        text-shadow: 2px 2px #333;
+    }
+
+    .bgimage h1 {
+        color: white;
+        text-shadow: 2px 2px #333;
+        padding-bottom: 20px;
+    }
+
+#search-container {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 50%;
+    height: 200px;
+    text-align: center;
+}
+
+#search {
+    width: 100%;
+}
+
+#navbar {
+    color: white;
+    font-size: x-large;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+#navbar {
+    top: 0%;
+}
+
+a.text-right {
+    color: #333333
+}
+
+    a.text-right:active {
+        color: #666666
+    }
+
+    a.text-right:link {
+        color: #999999
+    }
+
+    a.text-right:visited {
+        color: #CCCCCC
+    }
