@@ -49,9 +49,9 @@
             </div>
         </div>
 
-        <ul class="list-group list-inline top-3">
+        <ul class="list-group list-inline top-3 borderless">
             <li class="list-group-item col-md-4 li-container">
-                <ul class="list-group">
+                <ul class="list-group borderless">
                     <li class="borderless list-group-item restaurant-name">Restaurant 1</li>
                     <li class="borderless list-group-item restaurant-address1">99 street</li>
                     <li class="borderless list-group-item restaurant-address2">nyc 11228</li>
@@ -79,7 +79,6 @@
 
     <footer class="footer">
         <ul>
-            <li class="text-right" &copy; @DateTime.Now.Year - Restaurant Reviews />
             <li class="text-right" style="float:right;">@Html.ActionLink("Contact", "Contact", "Home", routeValues: null, htmlAttributes: new { id = "Contact" })</li>
             <li class="text-right" style="float:right;">@Html.ActionLink("About", "About", "Home", routeValues: null, htmlAttributes: new { id = "About" })</li>
         </ul>
