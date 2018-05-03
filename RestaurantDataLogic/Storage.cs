@@ -13,6 +13,10 @@ namespace RestaurantDataLogic
         {
             this.utility = utility;
         }
+        public int AddRestaurant(Restaurant r) { return utility.AddRestaurant(r); }
+        public void EditRestaurant(Restaurant r, int restaurantId) { utility.EditRestaurant(r, restaurantId); }
+        public void DeleteRestaurant(int id) { utility.DeleteRestaurant(id); }
+
         public int GetRestaurantId(string restaurantName) { return utility.GetRestaurantId(restaurantName); }
         public List<Restaurant> GetRestaurantModels() { return utility.GetRestaurantModels(); }
         public List<Review> GetReviewModels(int restaurantId) { return utility.GetReviewModels(restaurantId); }

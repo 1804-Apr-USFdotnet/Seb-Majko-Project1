@@ -30,5 +30,6 @@ namespace RestaurantDataLogic
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [JsonIgnoreAttribute]
         public virtual ICollection<Review> Reviews { get; set; }
+
     }
 }

@@ -33,9 +33,9 @@
                 }
                 else
                 {*@
-                    <li class="text-right" style="float:right;">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                    @*<li class="text-right" style="float:right;">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
-                    <li id="modBtn" class="text-right" style="float:right;">Login</li>
+                <li class="text-right" style="float:right;">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                @*<li class="text-right" style="float:right;">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>*@
+                <li id="modBtn" class="text-right" style="float:right;">Login</li>
                 @*}*@
             </ul>
         </div>
@@ -49,43 +49,17 @@
             </div>
         </div>
 
-        <ul class="list-group list-inline top-3 borderless">
-            <li class="list-group-item col-md-4 li-container">
-                <ul class="list-group borderless">
-                    <li class="borderless list-group-item restaurant-name">Restaurant 1</li>
-                    <li class="borderless list-group-item restaurant-address1">99 street</li>
-                    <li class="borderless list-group-item restaurant-address2">nyc 11228</li>
-                    <li class="borderless list-group-item restaurant-rating">4.4/5</li>
-                </ul>
-            </li>
-            <li class="list-group-item col-md-4 li-container">
-                <ul class="list-group">
-                    <li class="borderless list-group-item restaurant-name">Restaurant 1</li>
-                    <li class="borderless list-group-item restaurant-address1">99 street</li>
-                    <li class="borderless list-group-item restaurant-address2">nyc 11228</li>
-                    <li class="borderless list-group-item restaurant-rating">4.4/5</li>
-                </ul>
-            </li>
-            <li class="list-group-item col-md-4 li-container">
-                <ul class="list-group">
-                    <li class="borderless list-group-item restaurant-name">Restaurant 1</li>
-                    <li class="borderless list-group-item restaurant-address1">99 street</li>
-                    <li class="borderless list-group-item restaurant-address2">nyc 11228</li>
-                    <li class="borderless list-group-item restaurant-rating">4.4/5</li>
-                </ul>
-            </li>
-        </ul>
-    </div>
+        @{ Html.RenderPartial("RestaurantTop3"); }
 
-    <footer class="footer">
-        <ul>
-            <li class="text-right" style="float:right;">@Html.ActionLink("Contact", "Contact", "Home", routeValues: null, htmlAttributes: new { id = "Contact" })</li>
-            <li class="text-right" style="float:right;">@Html.ActionLink("About", "About", "Home", routeValues: null, htmlAttributes: new { id = "About" })</li>
-        </ul>
-    </footer>
+        <footer class="footer">
+            <ul>
+                <li class="text-right" style="float:right;">@Html.ActionLink("Contact", "Contact", "Home", routeValues: null, htmlAttributes: new { id = "Contact" })</li>
+                <li class="text-right" style="float:right;">@Html.ActionLink("About", "About", "Home", routeValues: null, htmlAttributes: new { id = "About" })</li>
+            </ul>
+        </footer>
 
-    @*@Html.Partial("/Views/Account/Login.cshtml")*@
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+        @*@Html.Partial("/Views/Account/Login.cshtml")*@
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
 </body>
 </html>

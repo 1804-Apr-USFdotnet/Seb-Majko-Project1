@@ -7,11 +7,11 @@ namespace RestaurantBusinessLogic
 {
     public static class ProcessInput
     {
-        static internal string GetRestaurants(params string[] restaurantParams)
+        static public List<RestaurantInfo> GetRestaurants(params string[] restaurantParams)
         {
             List<Restaurant> restaurants = new List<Restaurant>();
             List<RestaurantInfo> restaurantsInfo = new List<RestaurantInfo>();
-            string response = null;
+            //string response = null;
 
             // 1) Validate input
             ValidateInput.Validate(restaurantParams);
@@ -29,13 +29,13 @@ namespace RestaurantBusinessLogic
             if (restaurantParams.Length > 1) { SortRestaurants.Sort(ref restaurantsInfo, restaurantParams); }
 
             // 6) Create response json string
-            response = JsonConvert.SerializeObject(restaurantsInfo);
+            // response = JsonConvert.SerializeObject(restaurantsInfo);
 
             // 7) Return response to client
-            return response;
+            return restaurantsInfo;
         }
 
-        static internal string GetReviews(params string[] reviewParams)
+        static public string GetReviews(params string[] reviewParams)
         {
             List<Review> reviews = new List<Review>();
             List<ReviewInfo> reviewsInfo = new List<ReviewInfo>();
@@ -63,12 +63,12 @@ namespace RestaurantBusinessLogic
             return response;
         }
 
-        public static string Response(params string[] inputParams)
-        {
-            if (inputParams[0] == "restaurants") return GetRestaurants(inputParams);
-            if (inputParams[0] == "reviews") return GetReviews(inputParams);
+        //public static  Response(params string[] inputParams)
+        //{
+        //    if (inputParams[0] == "restaurants") return GetRestaurants(inputParams);
+        //    if (inputParams[0] == "reviews") return GetReviews(inputParams);
 
-            return null;
-        }
+        //    return null;
+        //}
     }
 }
