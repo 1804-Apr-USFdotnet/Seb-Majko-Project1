@@ -27,5 +27,12 @@ namespace RestaurantMVC.Controllers
 
             return View();
         }
+
+        public ActionResult Restaurants()
+        {
+            List<Restaurant> r = Restaurant.GetRestaurants();
+            //return View();
+            return RedirectToAction("Restaurants", "Restaurant");
+        }
     }
 }

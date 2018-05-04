@@ -1,7 +1,4 @@
-﻿
-@{
-    Layout = null;
-}
+﻿@model IEnumerable<RestaurantMVC.Models.Review>
 
 <!DOCTYPE html>
 
@@ -11,7 +8,16 @@
     <title>Reviews</title>
 </head>
 <body>
-    <div> 
+    <div>
+        <ol>
+            @foreach(var review in Model)
+            {
+                <li>@review.Name</li>
+                <li>@review.Summary</li>
+                <li>@review.Rating</li>
+                <li>.............</li>
+            }
+        </ol>
     </div>
 </body>
 </html>

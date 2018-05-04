@@ -18,7 +18,7 @@
         <div class="container-fluid" id="navbar">
             <ul class="list-inline" id="action-list">
                 <li class="text-left">@Html.ActionLink("Home", "Index", "Home")</li>
-                <li class="text-left">@Html.ActionLink("Restaurants", "Restaurants", "Home")</li>
+                <li class="text-left">@Html.ActionLink("Restaurants", "Restaurants", "Restaurant")</li>
                 @*TODO: Implement identity*@
                 @*@using Microsoft.AspNet.Identity
                     @if (Request.IsAuthenticated)
@@ -50,9 +50,39 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        @{ Html.RenderPartial("_PartialRestaurants", Model); }
-
+    @*@{ Html.RenderPartial("_PartialRestaurants", Model); }*@
+    <div id="products" class="row list-group">
+        <div class="col-md-1"></div>
+        @foreach (var restaurant in Model)
+    {
+        <div class="item  col-md-3">
+            <div class="thumbnail">
+                <img class="group list-group-image" src="https://warriortradingnews.com/wp-content/uploads/2016/01/MCD-Logo.png" alt="" />
+                <div class="caption">
+                    <h4 class="group inner list-group-item-heading">
+                        @restaurant.Name
+                    </h4>
+                    <p class="group inner list-group-item-text">
+                        @restaurant.Address
+                    </p>
+                    <div class="row">
+                        <div class="col-xs-8 col-md-4">
+                            <p class="lead">
+                                @restaurant.Rating
+                            </p>
+                        </div>
+                        <div class="col-xs-8 col-md-4">
+                            @*<a class="btn btn-success" href="http://www.jquery2dotnet.com">Reviews</a>*@
+                            @Html.ActionLink("Reviews", "Reviews", "Restaurant", new { list = restaurant.Reviews }, new { @class = "btn btn-success"})
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+}
+    </div>
         <footer class="footer">
             <ul>
                 <li class="text-right" style="float:right;">@Html.ActionLink("Contact", "Contact", "Home", routeValues: null, htmlAttributes: new { id = "Contact" })</li>

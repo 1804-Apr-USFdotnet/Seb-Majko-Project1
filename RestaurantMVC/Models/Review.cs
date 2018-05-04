@@ -1,6 +1,6 @@
 ﻿using RestaurantBusinessLogic;
 
-namespace RestaurantMVC
+namespace RestaurantMVC.Models
 {
     public struct Review
     {
@@ -12,8 +12,8 @@ namespace RestaurantMVC
         {
             Review r = new Review();
             r.Name = rout.Name;
-            r.Summary = r.Summary;
-            r.Rating = (double)r.Rating;
+            r.Summary = rout.Summary;
+            r.Rating = (double)rout.Rating;
 
             return r;
         }

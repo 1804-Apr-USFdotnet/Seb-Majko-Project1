@@ -22,9 +22,15 @@ namespace RestaurantMVC.Controllers
             return View();
         }
 
-        public ActionResult Reviews()
+        public ActionResult Reviews(List<Review> r)
         {
-            return View();
+            return View(r);
+        }
+
+        public ActionResult Restaurants()
+        {
+            List<Restaurant> r = Restaurant.GetRestaurants("restaurants");
+            return View(r);
         }
 
         // GET: Restaurant/Create
