@@ -9,17 +9,13 @@
 
 namespace RestaurantDataLogic
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     
     public partial class Review
     {
-        [JsonIgnoreAttribute]
         public int id { get; set; }
-        [JsonIgnoreAttribute]
         public int ReviewId { get; set; }
-
         public string Name { get; set; }
         public string Summary { get; set; }
         public double Rating { get; set; }

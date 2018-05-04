@@ -35,40 +35,22 @@ namespace RestaurantBusinessLogic
             return restaurantsInfo;
         }
 
-        static public string GetReviews(params string[] reviewParams)
+        static public List<ReviewInfo> GetReviews(int id)
         {
             List<Review> reviews = new List<Review>();
             List<ReviewInfo> reviewsInfo = new List<ReviewInfo>();
-            string response = null;
 
-            // 1) Validate input
-            ValidateInput.Validate(reviewParams);
-
-            // 2) Dependency injection
+            // 1) Dependency injection
             Storage storage = new Storage(new DBUtility());
 
-            // 3) Get restaurant id based on name
-            int restaurantId = storage.GetRestaurantId(string.Join(" ", reviewParams.Skip(1).ToArray()));
+            // 2) Get list of reviews from database based on restaurant id
+            reviews = storage.GetReviewModels(id);
 
-            // 4) Get list of reviews from database based on restaurant id
-            reviews = storage.GetReviewModels(restaurantId);
-
-            // 5) Convert list of review models to list of review output objects
+            // 3) Convert list of review models to list of review output objects
             reviewsInfo = ConvertModels.GetReviewInfos(reviews);
 
-            // 6) Create response json string
-            response = JsonConvert.SerializeObject(reviewsInfo);
-
-            // 7) Return response to client
-            return response;
+            // 4) Return response to client
+            return reviewsInfo;
         }
-
-        //public static  Response(params string[] inputParams)
-        //{
-        //    if (inputParams[0] == "restaurants") return GetRestaurants(inputParams);
-        //    if (inputParams[0] == "reviews") return GetReviews(inputParams);
-
-        //    return null;
-        //}
     }
 }

@@ -4,15 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RestaurantsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RestaurantsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Restaurants">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Address" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Rating" Type="float" Nullable="false" />
+          <Property Name="Image" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Reviews">
           <Key>
@@ -24,7 +25,7 @@
           <Property Name="Summary" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Rating" Type="float" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Reviews__id__5BE2A6F2">
+        <Association Name="FK__Reviews__id__6FE99F9F">
           <End Role="Restaurants" Type="Self.Restaurants" Multiplicity="1" />
           <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
           <ReferentialConstraint>
@@ -39,13 +40,12 @@
         <EntityContainer Name="RestaurantsModelStoreContainer">
           <EntitySet Name="Restaurants" EntityType="Self.Restaurants" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Reviews__id__5BE2A6F2" Association="Self.FK__Reviews__id__5BE2A6F2">
+          <AssociationSet Name="FK__Reviews__id__6FE99F9F" Association="Self.FK__Reviews__id__6FE99F9F">
             <End Role="Restaurants" EntitySet="Restaurants" />
             <End Role="Reviews" EntitySet="Reviews" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RestaurantsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -55,9 +55,10 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Rating" Type="Double" Nullable="false" />
           <NavigationProperty Name="Reviews" Relationship="Self.FK__Reviews__id__5BE2A6F2" FromRole="Restaurants" ToRole="Reviews" />
+          <Property Name="Image" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Review">
           <Key>
@@ -99,6 +100,7 @@
           <EntitySetMapping Name="Restaurants">
             <EntityTypeMapping TypeName="RestaurantsModel.Restaurant">
               <MappingFragment StoreEntitySet="Restaurants">
+                <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Address" ColumnName="Address" />

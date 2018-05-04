@@ -10,6 +10,7 @@ namespace RestaurantMVC.Models
         public string Name { get; set; }
         public string Address { get; set; }
         public double Rating { get; set; }
+        public string Image { get; set; }
         public List<Review> Reviews { get; set; }
 
             /**********************************
@@ -81,7 +82,8 @@ namespace RestaurantMVC.Models
                 Name = rInfo.Name,
                 Address = rInfo.Address,
                 Rating = rInfo.Rating,
-                Reviews = rInfo.Reviews.Cast<Review>().ToList()
+                Image = rInfo.Image,
+                //Reviews = rInfo.Reviews.Cast<Review>().ToList()
             };
             return r;
         }
@@ -91,7 +93,8 @@ namespace RestaurantMVC.Models
             RestaurantInfo rInfo = new RestaurantInfo
             {
                 Name = r.Name,
-                Address = r.Address
+                Address = r.Address,
+                Image = r.Image
             };
             return rInfo;
         }

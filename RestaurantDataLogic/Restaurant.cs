@@ -10,6 +10,7 @@
 namespace RestaurantDataLogic
 {
     using Newtonsoft.Json;
+    using System;
     using System.Collections.Generic;
     
     public partial class Restaurant
@@ -19,17 +20,14 @@ namespace RestaurantDataLogic
         {
             this.Reviews = new HashSet<Review>();
         }
-
-        [JsonIgnoreAttribute]
+    
         public int id { get; set; }
-
         public string Name { get; set; }
         public string Address { get; set; }
         public double Rating { get; set; }
+        public string Image { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        [JsonIgnoreAttribute]
-        public ICollection<Review> Reviews { get; set; }
-
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }

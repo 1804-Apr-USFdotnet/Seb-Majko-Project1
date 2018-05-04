@@ -22,8 +22,9 @@ namespace RestaurantMVC.Controllers
             return View();
         }
 
-        public ActionResult Reviews(List<Review> r)
+        public ActionResult Reviews(int id)
         {
+            List<Review> r = Review.GetReviews(id);
             return View(r);
         }
 

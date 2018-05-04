@@ -10,6 +10,7 @@ namespace RestaurantBusinessLogic
         public string Name { get; set; }
         public string Address { get; set; }
         public double Rating { get; set; }
+        public string Image { get; set; }
         public List<ReviewInfo> Reviews { get; set; }
 
         // Convert from Restaurant entity model to RestaurantInfo
@@ -20,7 +21,8 @@ namespace RestaurantBusinessLogic
             rout.Name = r.Name;
             rout.Address = r.Address;
             rout.Rating = (double)r.Rating;
-            rout.Reviews = r.Reviews.Cast<ReviewInfo>().ToList();
+            rout.Image = r.Image;
+            //rout.Reviews = r.Reviews.Cast<ReviewInfo>().ToList();
 
             return rout;
         }
@@ -32,6 +34,7 @@ namespace RestaurantBusinessLogic
             rout.Name = r.Name;
             rout.Address = r.Address;
             rout.Rating = (double)r.Rating;
+            rout.Image = r.Image;
 
             return rout;
         }
