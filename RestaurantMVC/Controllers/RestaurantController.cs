@@ -34,6 +34,13 @@ namespace RestaurantMVC.Controllers
             return View(r);
         }
 
+        [HttpPost]
+        public ActionResult Restaurants(string search = "")
+        {
+            List<Restaurant> r = Restaurant.GetRestaurants("restaurants", "contains", search);
+            return View(r);
+        }
+
         // GET: Restaurant/Create
         public ActionResult Create()
         {
