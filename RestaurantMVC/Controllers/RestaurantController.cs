@@ -30,15 +30,51 @@ namespace RestaurantMVC.Controllers
 
         public ActionResult Restaurants()
         {
-            List<Restaurant> r = Restaurant.GetRestaurants("restaurants");
+            List<Restaurant> r = TempData["restaurants"] as List<Restaurant>;
+            if (r == null) { r = Restaurant.GetRestaurants("restaurants"); }
             return View(r);
         }
 
         [HttpPost]
-        public ActionResult Restaurants(string search = "")
+        public ActionResult RestaurantsSearch(string search = "")
         {
             List<Restaurant> r = Restaurant.GetRestaurants("restaurants", "contains", search);
-            return View(r);
+            TempData["restaurants"] = r;
+            return RedirectToAction("Restaurants");
+        }
+
+        [HttpPost]
+        public ActionResult RestaurantsSort(bool name = true, bool asc = true)
+        {
+            List<Restaurant> r = new List<Restaurant>();
+            switch (name)
+            {
+                case true:
+                    switch (asc)
+                    {
+                        case true:
+                            r = Restaurant.GetRestaurants("restaurants", "sortby", "name", "asc");
+                            break;
+                        case false:
+                            r = Restaurant.GetRestaurants("restaurants", "sortby", "name", "desc");
+                            break;
+                    }
+                    break;
+                case false:
+                    switch (asc)
+                    {
+                        case true:
+                            r = Restaurant.GetRestaurants("restaurants", "sortby", "rating", "asc");
+                            break;
+                        case false:
+                            r = Restaurant.GetRestaurants("restaurants", "sortby", "rating", "desc");
+                            break;
+                    }
+                    break;
+            }
+            TempData["restaurants"] = r;
+            return RedirectToAction("Restaurants");
+            //return Restaurants(r);
         }
 
         // GET: Restaurant/Create
