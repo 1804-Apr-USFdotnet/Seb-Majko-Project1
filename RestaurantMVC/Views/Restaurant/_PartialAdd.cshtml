@@ -28,6 +28,8 @@
                             @Html.TextBoxFor(m => m.Image, new { placeholder = "Image URL (optional)", @class = "form-control" })
                             @Html.ValidationMessageFor(m => m.Image, "", new { @class = "text-danger" })
                         </div>
+
+                        @Html.HiddenFor(m => m.id);
                         <div class="form-group">
                             <input type="submit" value="Submit" class="btn btn-success @*btn-def btn-block*@" />
                         </div>

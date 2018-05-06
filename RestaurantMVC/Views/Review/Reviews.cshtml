@@ -1,6 +1,9 @@
 ﻿@model IEnumerable<RestaurantMVC.Models.Review>
 @{
+    //RestaurantMVC.Models.Review r;
     RestaurantMVC.Models.Review r;
+    if (TempData["r"] != null) { r = (RestaurantMVC.Models.Review)TempData["r"]; }
+    else { r = new RestaurantMVC.Models.Review(); }
 }
 
 <!DOCTYPE html>
@@ -9,6 +12,31 @@
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <link rel="stylesheet" href="~/Content/Reviews.css">
     <script src="~/Scripts/partialmodal2.js"></script>
+
+    @if (r.Name != null)
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var modal = $('#modal'),
+                    close = modal.find('.close'),
+                    modContent = modal.find('.modal-content');
+
+                // open modal on document ready
+                modal.css('display', 'block');
+                modContent.removeClass('modal-animated-out').addClass('modal-animated-in');
+
+                $(document).on('click', function (e) {
+                    var target = $(e.target);
+                    if (target.is(modal) || target.is(close)) {
+                        modContent.removeClass('modal-animated-in').addClass('modal-animated-out').delay(300).queue(function (next) {
+                            modal.css('display', 'none');
+                            next();
+                        });
+                    }
+                });
+            });
+        </script>
+    }
 </head>
 
 <body>
@@ -24,7 +52,7 @@
                     <div class="row">
                         <div class="col-md-2 col-md-offset-8">
                             @*<a class="btn btn-success" href="http://www.jquery2dotnet.com">Reviews</a>*@
-                            @Html.ActionLink("Edit", "Edit", "Review", new { id = review.Rating }, new { @class = "btn btn-success nounderline", id = "modBtn" })
+                            @Html.ActionLink("Edit", "Edit", "Review", new { reviewId = review.ReviewId, restaurantId = review.RestaurantId, name = review.Name, summary = review.Summary, rating = review.Rating }, new { @class = "btn btn-success nounderline", id = "modBtn" })
                         </div>
                         <div class="but col-md-2">
                             @using (Html.BeginForm("Delete", "Review", FormMethod.Post))
@@ -42,6 +70,7 @@
             <btn class="btn btn-success text-right col-md-4" id="modBtn2" style="margin-left:190px; margin-bottom: 50px;">Add Review</btn>
         </div>
     </div>
-    @Html.Partial("/Views/Review/_PartialAdd.cshtml", new RestaurantMVC.Models.Review{ RestaurantId = (int)TempData["id"] })
+    @*@Html.Partial("/Views/Review/_PartialAdd.cshtml", new RestaurantMVC.Models.Review{ RestaurantId = (int)TempData["id"] })*@
+    @Html.Partial("/Views/Review/_PartialAdd.cshtml", r)
 </body>
 </html>

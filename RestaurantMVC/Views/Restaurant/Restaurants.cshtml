@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<RestaurantMVC.Models.Restaurant>
 @{
     RestaurantMVC.Models.Restaurant r;
+    if (TempData["r"] != null) { r = (RestaurantMVC.Models.Restaurant)TempData["r"]; }
+    else { r = new RestaurantMVC.Models.Restaurant(); }
 }
 
 <!DOCTYPE html>
@@ -11,6 +13,31 @@
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="~/Scripts/Restaurants.js"></script>
     <script src="~/Scripts/partialmodal.js"></script>
+
+    @if (r.Name != null)
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var modal = $('#modal'),
+                    close = modal.find('.close'),
+                    modContent = modal.find('.modal-content');
+
+                // open modal on document ready
+                modal.css('display', 'block');
+                modContent.removeClass('modal-animated-out').addClass('modal-animated-in');
+
+                $(document).on('click', function (e) {
+                    var target = $(e.target);
+                    if (target.is(modal) || target.is(close)) {
+                        modContent.removeClass('modal-animated-in').addClass('modal-animated-out').delay(300).queue(function (next) {
+                            modal.css('display', 'none');
+                            next();
+                        });
+                    }
+                });
+            });
+        </script>
+    }
 </head>
 
 <body>
@@ -77,7 +104,7 @@
                                 </div>
                                 <div class="but col-xs-12 col-md-3">
                                     @*<a class="btn btn-success" href="http://www.jquery2dotnet.com">Reviews</a>*@
-                                    @Html.ActionLink("Edit", "Edit", "Restaurant", new { id = restaurant.id }, new { @class = "btn btn-success", id = "modBtn" })
+                                    @Html.ActionLink("Edit", "Edit", "Restaurant", new { Id = restaurant.id, name = restaurant.Name, address = restaurant.Address, image = restaurant.Image }, new { @class = "btn btn-success", id = "modBtn" })
                                 </div>
                                 <div class="but col-xs-12 col-md-3">
                                     @*<a class="btn btn-success" href="http://www.jquery2dotnet.com">Reviews</a>*@
@@ -96,7 +123,7 @@
         </div>
     </div>
 
-    @Html.Partial("/Views/Restaurant/_PartialAdd.cshtml", new RestaurantMVC.Models.Restaurant())
+    @Html.Partial("/Views/Restaurant/_PartialAdd.cshtml", r)
 </body>
 </html>
 

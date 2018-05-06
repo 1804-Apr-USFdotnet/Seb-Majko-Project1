@@ -81,6 +81,14 @@ namespace RestaurantMVC.Controllers
             }
         }
 
+        public ActionResult Edit(int Id, string name, string address, string image)
+        {
+            Restaurant r = new Restaurant { id = Id, Name = name, Address = address, Image = image };
+            TempData["r"] = r;
+
+            return RedirectToAction("Restaurants");
+        }
+
 
         // POST: Restaurant/Edit/5
         [HttpPost]
@@ -94,7 +102,7 @@ namespace RestaurantMVC.Controllers
             }
             catch
             {
-                return View();
+                return RedirectToAction("Restaurants");
             }
         }
 

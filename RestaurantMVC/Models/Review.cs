@@ -89,6 +89,7 @@ namespace RestaurantMVC.Models
         {
             ReviewInfo rInfo = new ReviewInfo
             {
+                ReviewId = r.ReviewId,
                 RestaurantId = r.RestaurantId,
                 Name = r.Name,
                 Summary = r.Summary,

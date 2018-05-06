@@ -31,6 +31,13 @@ namespace RestaurantMVC.Controllers
             }
         }
 
+        public ActionResult Edit(int reviewId, int restaurantId, string name, string summary, double rating)
+        {
+            Review r = new Review { ReviewId = reviewId, RestaurantId = restaurantId, Name = name, Summary = summary, Rating = rating };
+            TempData["r"] = r;
+            return Redirect(Request.UrlReferrer.ToString());
+        }
+
         // POST: Review/Edit/
         [HttpPost]
         public ActionResult Edit(Review r)
@@ -38,11 +45,11 @@ namespace RestaurantMVC.Controllers
             try
             {
                 Review.Update(r);
-                return RedirectToAction("Index");
+                return RedirectToAction("Reviews", new { id = r.RestaurantId });
             }
             catch
             {
-                return View();
+                return RedirectToAction("Reviews", new { id = r.RestaurantId });
             }
         }
 

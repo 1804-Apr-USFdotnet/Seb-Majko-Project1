@@ -92,6 +92,7 @@ namespace RestaurantMVC.Models
         {
             RestaurantInfo rInfo = new RestaurantInfo
             {
+                id = r.id,
                 Name = r.Name,
                 Address = r.Address,
                 Image = r.Image
