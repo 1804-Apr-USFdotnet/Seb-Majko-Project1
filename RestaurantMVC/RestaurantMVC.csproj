@@ -150,6 +150,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RestaurantController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -163,7 +164,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Contact.css" />
     <Content Include="Content\Index.css" />
-    <Content Include="Content\PartialRestaurants.css" />
+    <Content Include="Content\partialview.css" />
     <Content Include="Content\Restaurants.css" />
     <Content Include="Content\Reviews.css" />
     <Content Include="favicon.ico" />
@@ -184,9 +185,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\partialmodal2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Restaurants.js" />
+    <Content Include="Scripts\partialmodal.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -201,10 +204,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Restaurant\Index.cshtml" />
-    <Content Include="Views\Restaurant\Reviews.cshtml" />
-    <Content Include="Views\Restaurant\Create.cshtml" />
+    <Content Include="Views\Review\Reviews.cshtml" />
     <Content Include="Views\Restaurant\Restaurants.cshtml" />
+    <Content Include="Views\Restaurant\_PartialAdd.cshtml" />
+    <Content Include="Views\Review\_PartialAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

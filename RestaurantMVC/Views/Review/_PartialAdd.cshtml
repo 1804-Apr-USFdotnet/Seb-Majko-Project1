@@ -1,0 +1,44 @@
+﻿@model RestaurantMVC.Models.Review
+@{ string mode = "Edit"; }
+
+<link rel="stylesheet" href="~/Content/partialview.css">
+
+<!-- Modal -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="Absolute-Center is-Responsive">
+                <div id="logo-container"></div>
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
+                    @if (Model.Name == String.Empty || Model.Name == null) { mode = "Create"; }
+                    @using (Html.BeginForm(mode, "Review", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            @Html.TextBoxFor(m => m.Name, new { placeholder = "Restaurant Name", @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            @Html.TextBoxFor(m => m.Summary, new { placeholder = "Summary", @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Summary, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                            @Html.TextBoxFor(m => m.Rating, new { placeholder = "Image URL (optional)", @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Rating, "", new { @class = "text-danger" })
+                        </div>
+                        @Html.HiddenFor(m => m.RestaurantId)
+                        <div class="form-group">
+                            <input type="submit" value="Submit" class="btn btn-success @*btn-def btn-block*@" />
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

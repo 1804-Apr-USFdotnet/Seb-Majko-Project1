@@ -10,7 +10,7 @@ namespace RestaurantDataLogic
         void DeleteRestaurant(int id);
 
         // Review utilities
-        int AddReview(Review r);
+        void AddReview(Review r);
         void EditReview(Review r, int reviewId);
         void DeleteReview(int id);
 

@@ -16,18 +16,6 @@ namespace RestaurantMVC.Controllers
             return View();
         }
 
-        // GET: Restaurant/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        public ActionResult Reviews(int id)
-        {
-            List<Review> r = Review.GetReviews(id);
-            return View(r);
-        }
-
         public ActionResult Restaurants()
         {
             List<Restaurant> r = TempData["restaurants"] as List<Restaurant>;
@@ -77,12 +65,6 @@ namespace RestaurantMVC.Controllers
             //return Restaurants(r);
         }
 
-        // GET: Restaurant/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
         // POST: Restaurant/Create
         [HttpPost]
         public ActionResult Create(Restaurant r)
@@ -91,7 +73,7 @@ namespace RestaurantMVC.Controllers
             {
                 // TODO: Add insert logic here
                 Restaurant.Add(r);
-                return RedirectToAction("Index");
+                return RedirectToAction("Restaurants");
             }
             catch
             {
@@ -99,21 +81,16 @@ namespace RestaurantMVC.Controllers
             }
         }
 
-        // GET: Restaurant/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
 
         // POST: Restaurant/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Restaurant r)
         {
             try
             {
                 // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                Restaurant.Update(r);
+                return RedirectToAction("Restaurants");
             }
             catch
             {
@@ -122,25 +99,11 @@ namespace RestaurantMVC.Controllers
         }
 
         // GET: Restaurant/Delete/5
+        [HttpPost]
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-        // POST: Restaurant/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            Restaurant.Delete(id);
+            return RedirectToAction("Restaurants");
         }
     }
 }

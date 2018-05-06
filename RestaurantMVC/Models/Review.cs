@@ -5,6 +5,8 @@ namespace RestaurantMVC.Models
 {
     public struct Review
     {
+        public int RestaurantId { get; set; }
+        public int ReviewId { get; set; }
         public string Name { get; set; }
         public string Summary { get; set; }
         public double Rating { get; set; }
@@ -12,11 +14,34 @@ namespace RestaurantMVC.Models
         public static explicit operator Review(ReviewInfo rout)
         {
             Review r = new Review();
+            r.RestaurantId = rout.RestaurantId;
+            r.ReviewId = rout.ReviewId;
             r.Name = rout.Name;
             r.Summary = rout.Summary;
             r.Rating = (double)rout.Rating;
 
             return r;
+        }
+
+        /**********************************
+         **                              **
+         **             CRUD             **
+         **                              **
+         **********************************/
+
+        public static void Add(Review r)
+        {
+            CRUD.AddReview(ToDB(r));
+        }
+
+        public static void Update(Review r)
+        {
+            CRUD.UpdateReview(ToDB(r));
+        }
+
+        public static void Delete(int id)
+        {
+            CRUD.DeleteReview(id);
         }
 
         /**********************************
@@ -51,11 +76,25 @@ namespace RestaurantMVC.Models
         {
             Review r = new Review
             {
+                ReviewId = rInfo.ReviewId,
+                RestaurantId = rInfo.RestaurantId,
                 Name = rInfo.Name,
                 Summary = rInfo.Summary,
                 Rating = rInfo.Rating,
             };
             return r;
+        }
+
+        private static ReviewInfo ToDB(Review r)
+        {
+            ReviewInfo rInfo = new ReviewInfo
+            {
+                RestaurantId = r.RestaurantId,
+                Name = r.Name,
+                Summary = r.Summary,
+                Rating = r.Rating
+            };
+            return rInfo;
         }
     }
 }

@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    @*@{ Html.RenderPartial("_PartialRestaurants", Model); }*@
+    @*@{ Html.RenderPartial("_partialview", Model); }*@
     <div id="products" class="row list-group">
         <div class="col-md-1"></div>
         @foreach (var restaurant in Model)
@@ -75,7 +75,7 @@
                             </div>
                             <div class="col-xs-8 col-md-4">
                                 @*<a class="btn btn-success" href="http://www.jquery2dotnet.com">Reviews</a>*@
-                                @Html.ActionLink("Reviews", "Reviews", "Restaurant", new { id = restaurant.id }, new { @class = "btn btn-success" })
+                                @Html.ActionLink("Reviews", "Reviews", "Review", new { id = restaurant.id }, new { @class = "btn btn-success" })
                             </div>
                         </div>
                     </div>

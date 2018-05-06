@@ -17,6 +17,10 @@ namespace RestaurantDataLogic
         public void EditRestaurant(Restaurant r, int restaurantId) { utility.EditRestaurant(r, restaurantId); }
         public void DeleteRestaurant(int id) { utility.DeleteRestaurant(id); }
 
+        public void AddReview(Review r) { utility.AddReview(r); }
+        public void EditReview(Review r, int reviewId) { utility.EditReview(r, reviewId); }
+        public void DeleteReview(int id) { utility.DeleteReview(id); }
+
         public int GetRestaurantId(string restaurantName) { return utility.GetRestaurantId(restaurantName); }
         public List<Restaurant> GetRestaurantModels() { return utility.GetRestaurantModels(); }
         public List<Review> GetReviewModels(int restaurantId) { return utility.GetReviewModels(restaurantId); }

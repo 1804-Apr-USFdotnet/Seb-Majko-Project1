@@ -30,16 +30,19 @@ namespace RestaurantBusinessLogic
         public static void AddReview(ReviewInfo r)
         {
             Storage storage = new Storage(new DBUtility());
+            storage.AddReview((Review)r);
         }
 
         public static void UpdateReview(ReviewInfo r)
         {
             Storage storage = new Storage(new DBUtility());
+            storage.EditReview((Review)r, r.ReviewId);
         }
 
         public static void DeleteReview(int id)
         {
             Storage storage = new Storage(new DBUtility());
+            storage.DeleteReview(id);
         }
     }
 }

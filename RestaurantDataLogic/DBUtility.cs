@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity; 
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 
 namespace RestaurantDataLogic
@@ -58,13 +60,19 @@ namespace RestaurantDataLogic
         /// Add review to database
         /// </summary>
         /// <returns>Id of added review</returns>
-        public int AddReview(Review r)
+        public void AddReview(Review r)
         {
-            using (var db = new RestaurantsEntities())
+            try
             {
-                db.Reviews.Add(r);
-                db.SaveChanges();
-                return r.id;
+                using (var db = new RestaurantsEntities())
+                {
+                    db.Reviews.Add(r);
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
             }
         }
 

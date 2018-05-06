@@ -1,0 +1,47 @@
+﻿@model IEnumerable<RestaurantMVC.Models.Review>
+@{
+    RestaurantMVC.Models.Review r;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="~/Content/Reviews.css">
+    <script src="~/Scripts/partialmodal2.js"></script>
+</head>
+
+<body>
+    <div>
+        <ol class="list">
+            @foreach (var review in Model)
+            {
+                <li class="item">
+                    <h2 class="headline">@review.Name <tab></tab> <mark style="background-color: aliceblue; margin-left:1em">@review.Rating</mark></h2>
+                    <span>
+                        @review.Summary
+                    </span>
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-8">
+                            @*<a class="btn btn-success" href="http://www.jquery2dotnet.com">Reviews</a>*@
+                            @Html.ActionLink("Edit", "Edit", "Review", new { id = review.Rating }, new { @class = "btn btn-success nounderline", id = "modBtn" })
+                        </div>
+                        <div class="but col-md-2">
+                            @using (Html.BeginForm("Delete", "Review", FormMethod.Post))
+                            {
+                                <input type="hidden" value=@review.ReviewId name="id" />
+                                <input type="hidden" value=@review.RestaurantId name="resId" />
+                                <input type="submit" value="Delete" class="btn btn-danger" />
+                            }
+                        </div>
+                    </div>
+                </li>
+            }
+        </ol>
+        <div class="well well-sm">
+            <btn class="btn btn-success text-right col-md-4" id="modBtn2" style="margin-left:190px; margin-bottom: 50px;">Add Review</btn>
+        </div>
+    </div>
+    @Html.Partial("/Views/Review/_PartialAdd.cshtml", new RestaurantMVC.Models.Review{ RestaurantId = (int)TempData["id"] })
+</body>
+</html>
