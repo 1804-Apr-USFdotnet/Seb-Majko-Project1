@@ -13,7 +13,7 @@ namespace RestaurantMVC.Controllers
         {
             List<Review> r = Review.GetReviews(id);
             TempData["id"] = id;
-            return View(r);
+            return View("Reviews", r);
         }
 
         // POST: Review/Create

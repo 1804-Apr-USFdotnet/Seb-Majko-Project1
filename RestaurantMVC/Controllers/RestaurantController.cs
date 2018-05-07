@@ -12,15 +12,14 @@ namespace RestaurantMVC.Controllers
         // GET: Restaurant
         public ActionResult Index()
         {
-            Restaurant r = new Restaurant();
-            return View();
+            return View("Index");
         }
 
         public ActionResult Restaurants()
         {
             List<Restaurant> r = TempData["restaurants"] as List<Restaurant>;
             if (r == null) { r = Restaurant.GetRestaurants("restaurants"); }
-            return View(r);
+            return View("Restaurants", r);
         }
 
         [HttpPost]

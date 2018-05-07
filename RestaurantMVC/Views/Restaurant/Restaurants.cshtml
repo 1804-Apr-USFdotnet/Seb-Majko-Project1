@@ -14,7 +14,7 @@
     <script src="~/Scripts/Restaurants.js"></script>
     <script src="~/Scripts/partialmodal.js"></script>
 
-    @if (r.Name != null)
+    @if (TempData["r"] != null)
     {
         <script type="text/javascript">
             $(document).ready(function () {

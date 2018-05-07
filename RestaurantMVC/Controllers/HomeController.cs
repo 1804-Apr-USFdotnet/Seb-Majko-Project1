@@ -11,7 +11,7 @@ namespace RestaurantMVC.Controllers
     {
         public ActionResult Index()
         {
-            return View(Restaurant.TopThree());
+            return View("Index", Restaurant.TopThree());
         }
 
         public ActionResult About()
