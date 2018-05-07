@@ -12,7 +12,7 @@ namespace RestaurantBusinessLogic
     {
         internal static void Validate(params string[] input)
         {
-            if (input.Length == 0) throw new InvalidInputException(); // no command given
+            if (input.Length == 0) throw new InvalidInputException();
             switch (input[0])
             {
                 case "reviews":
