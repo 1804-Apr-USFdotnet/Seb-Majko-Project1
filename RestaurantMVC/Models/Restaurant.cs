@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using RestaurantBusinessLogic;
 
@@ -7,7 +8,11 @@ namespace RestaurantMVC.Models
     public struct Restaurant
     {
         public int id { get; set; }
+        [Required]
+        [StringLength(50, ErrorMessage = "Cannot be more than 50 characters")]
         public string Name { get; set; }
+        [Required]
+        [StringLength(100, ErrorMessage = "Cannot be more than 100 characters")]
         public string Address { get; set; }
         public double Rating { get; set; }
         public string Image { get; set; }

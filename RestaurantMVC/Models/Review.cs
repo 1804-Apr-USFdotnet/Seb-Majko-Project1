@@ -1,5 +1,6 @@
 ﻿using RestaurantBusinessLogic;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace RestaurantMVC.Models
 {
@@ -7,8 +8,14 @@ namespace RestaurantMVC.Models
     {
         public int RestaurantId { get; set; }
         public int ReviewId { get; set; }
+        [Required]
+        [StringLength(50, ErrorMessage = "Cannot be more than 50 characters")]
         public string Name { get; set; }
+        [Required]
+        [StringLength(200, ErrorMessage = "Cannot be more than 200 characters")]
         public string Summary { get; set; }
+        [Required]
+        [Range(0, 5, ErrorMessage = "Price must be between 0 and 100.00")]
         public double Rating { get; set; }
 
         public static explicit operator Review(ReviewInfo rout)
