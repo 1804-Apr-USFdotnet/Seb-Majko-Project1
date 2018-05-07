@@ -3,7 +3,7 @@
     //RestaurantMVC.Models.Review r;
     RestaurantMVC.Models.Review r;
     if (TempData["r"] != null) { r = (RestaurantMVC.Models.Review)TempData["r"]; }
-    else { r = new RestaurantMVC.Models.Review(); }
+    else { r = new RestaurantMVC.Models.Review(); r.RestaurantId = (int)TempData["id"]; }
 }
 
 <!DOCTYPE html>

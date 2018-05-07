@@ -166,6 +166,7 @@
     <Content Include="Content\Index.css" />
     <Content Include="Content\partialview.css" />
     <Content Include="Content\Restaurants.css" />
+    <Content Include="Content\ReviewPartial.css" />
     <Content Include="Content\Reviews.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

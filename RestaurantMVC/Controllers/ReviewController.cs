@@ -27,7 +27,7 @@ namespace RestaurantMVC.Controllers
             }
             catch
             {
-                return View(r);
+                return RedirectToAction("Reviews", new { id = r.RestaurantId });
             }
         }
 

@@ -1,6 +1,8 @@
 ﻿@model RestaurantMVC.Models.Review
-@{ string mode = "Edit"; }
+@{ string mode = "Edit"; string placeholderRating = "";}
 
+
+<link rel="stylesheet" href="~/Content/ReviewPartial.css">
 <link rel="stylesheet" href="~/Content/partialview.css">
 
 <!-- Modal -->
@@ -10,7 +12,7 @@
             <div class="Absolute-Center is-Responsive">
                 <div id="logo-container"></div>
                 <div class="col-sm-12 col-md-10 col-md-offset-1">
-                    @if (Model.Name == String.Empty || Model.Name == null) { mode = "Create"; }
+                    @if (Model.Name == String.Empty || Model.Name == null) { mode = "Create"; } else { placeholderRating = Model.Rating.ToString(); }
                     @using (Html.BeginForm(mode, "Review", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                     {
                         <div class="form-group input-group">
@@ -21,11 +23,11 @@
                         <div class="form-group input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                             @Html.TextBoxFor(m => m.Summary, new { placeholder = "Summary", @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.Summary, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(m => m.Summary,  "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            @Html.TextBoxFor(m => m.Rating, new { placeholder = "Rating", @class = "form-control" })
+                            @Html.TextBoxFor(m => m.Rating, new { Value = placeholderRating, placeholder = "Rating", @class = "form-control" })
                             @Html.ValidationMessageFor(m => m.Rating, "", new { @class = "text-danger" })
                         </div>
                         @Html.HiddenFor(m => m.RestaurantId)
