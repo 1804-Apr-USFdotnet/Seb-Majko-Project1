@@ -1,8 +1,5 @@
 ﻿using RestaurantMVC.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace RestaurantMVC.Controllers
@@ -31,7 +28,6 @@ namespace RestaurantMVC.Controllers
         public ActionResult Restaurants()
         {
             List<Restaurant> r = Restaurant.GetRestaurants();
-            //return View();
             return RedirectToAction("Restaurants", "Restaurant");
         }
     }

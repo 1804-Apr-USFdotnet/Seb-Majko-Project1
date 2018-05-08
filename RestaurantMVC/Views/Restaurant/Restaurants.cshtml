@@ -99,16 +99,12 @@
                                     </p>
                                 </div>
                                 <div class="but col-xs-12 col-md-3">
-                                    @*<a class="btn btn-success" href="http://www.jquery2dotnet.com">Reviews</a>*@
                                     @Html.ActionLink("Reviews", "Reviews", "Review", new { id = restaurant.id }, new { @class = "btn btn-success" })
                                 </div>
                                 <div class="but col-xs-12 col-md-3">
-                                    @*<a class="btn btn-success" href="http://www.jquery2dotnet.com">Reviews</a>*@
                                     @Html.ActionLink("Edit", "Edit", "Restaurant", new { Id = restaurant.id, name = restaurant.Name, address = restaurant.Address, image = restaurant.Image }, new { @class = "btn btn-success", id = "modBtn" })
                                 </div>
                                 <div class="but col-xs-12 col-md-3">
-                                    @*<a class="btn btn-success" href="http://www.jquery2dotnet.com">Reviews</a>*@
-                                    @*@Html.ActionLink("Delete", "Delete", "Restaurant", new { id = restaurant.id }, new { @class = "btn btn-danger" })*@
                                     @using (Html.BeginForm("Delete", "Restaurant", FormMethod.Post))
                                     {
                                         <input type="hidden" value=@restaurant.id name="id" />

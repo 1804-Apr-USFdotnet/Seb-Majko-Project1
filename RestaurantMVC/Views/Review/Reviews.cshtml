@@ -51,7 +51,6 @@
                     </span>
                     <div class="row">
                         <div class="col-md-2 col-md-offset-8">
-                            @*<a class="btn btn-success" href="http://www.jquery2dotnet.com">Reviews</a>*@
                             @Html.ActionLink("Edit", "Edit", "Review", new { reviewId = review.ReviewId, restaurantId = review.RestaurantId, name = review.Name, summary = review.Summary, rating = review.Rating }, new { @class = "btn btn-success nounderline", id = "modBtn" })
                         </div>
                         <div class="but col-md-2">
@@ -70,7 +69,6 @@
             <btn class="btn btn-success text-right col-md-4" id="modBtn2" style="margin-left:190px; margin-bottom: 50px;">Add Review</btn>
         </div>
     </div>
-    @*@Html.Partial("/Views/Review/_PartialAdd.cshtml", new RestaurantMVC.Models.Review{ RestaurantId = (int)TempData["id"] })*@
     @Html.Partial("/Views/Review/_PartialAdd.cshtml", r)
 </body>
 </html>

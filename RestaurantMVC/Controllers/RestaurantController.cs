@@ -61,23 +61,14 @@ namespace RestaurantMVC.Controllers
             }
             TempData["restaurants"] = r;
             return RedirectToAction("Restaurants");
-            //return Restaurants(r);
         }
 
         // POST: Restaurant/Create
         [HttpPost]
         public ActionResult Create(Restaurant r)
         {
-            try
-            {
-                // TODO: Add insert logic here
-                Restaurant.Add(r);
-                return RedirectToAction("Restaurants");
-            }
-            catch
-            {
-                return View(r);
-            }
+            if (ModelState.IsValid) Restaurant.Add(r);
+            return RedirectToAction("Restaurants");
         }
 
         public ActionResult Edit(int Id, string name, string address, string image)
@@ -93,23 +84,15 @@ namespace RestaurantMVC.Controllers
         [HttpPost]
         public ActionResult Edit(Restaurant r)
         {
-            try
-            {
-                // TODO: Add update logic here
-                Restaurant.Update(r);
-                return RedirectToAction("Restaurants");
-            }
-            catch
-            {
-                return RedirectToAction("Restaurants");
-            }
+            if (ModelState.IsValid) Restaurant.Update(r);
+            return RedirectToAction("Restaurants");
         }
 
         // GET: Restaurant/Delete/5
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            Restaurant.Delete(id);
+            if (ModelState.IsValid) Restaurant.Delete(id);
             return RedirectToAction("Restaurants");
         }
     }

@@ -1,8 +1,5 @@
 ﻿using RestaurantMVC.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace RestaurantMVC.Controllers
@@ -20,15 +17,8 @@ namespace RestaurantMVC.Controllers
         [HttpPost]
         public ActionResult Create(Review r)
         {
-            try
-            {
-                Review.Add(r);
-                return RedirectToAction("Reviews", new { id = r.RestaurantId });
-            }
-            catch
-            {
-                return RedirectToAction("Reviews", new { id = r.RestaurantId });
-            }
+            if (ModelState.IsValid) Review.Add(r);
+            return RedirectToAction("Reviews", new { id = r.RestaurantId });
         }
 
         public ActionResult Edit(int reviewId, int restaurantId, string name, string summary, double rating)
@@ -42,22 +32,15 @@ namespace RestaurantMVC.Controllers
         [HttpPost]
         public ActionResult Edit(Review r)
         {
-            try
-            {
-                Review.Update(r);
-                return RedirectToAction("Reviews", new { id = r.RestaurantId });
-            }
-            catch
-            {
-                return RedirectToAction("Reviews", new { id = r.RestaurantId });
-            }
+            if (ModelState.IsValid) Review.Update(r);
+            return RedirectToAction("Reviews", new { id = r.RestaurantId });
         }
 
         // GET: Review/Delete/
         [HttpPost]
         public ActionResult Delete(int id, int resId)
         {
-            Review.Delete(id);
+            if (ModelState.IsValid) Review.Delete(id);
             return RedirectToAction("Reviews", new { id = resId });
         }
     }
